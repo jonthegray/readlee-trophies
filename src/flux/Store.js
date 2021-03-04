@@ -16,15 +16,15 @@ class Store extends EventEmitter {
   }
 
   emitChange() {
-    this.emitChange(CHANGE_EVENT);
+    super.emitChange(CHANGE_EVENT);
   }
 
   addListener(callback) {
-    this.on(CHANGE_EVENT, callback);
+    super.on(CHANGE_EVENT, callback);
   }
 
   removeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    super.removeListener(CHANGE_EVENT, callback);
   }
 }
 
