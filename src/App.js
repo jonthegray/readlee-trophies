@@ -7,8 +7,8 @@ import Trophies from "./views/Trophies.jsx";
  * App is a non-presentational component solely for communicating with the Store
  */
 const App = () => {
-  // Keep data in state so that changes will trigger re-renders in the presentational
-  // components.
+  // Keep data in state so that changes will trigger re-renders in the
+  // presentational components.
   const [data, setData] = React.useState(Store.getData());
 
   const storeChanged = () => {
