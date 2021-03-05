@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App.js";
+import Actions from "./flux/Actions.js";
 import reportWebVitals from "./reportWebVitals.js";
+
+// Get data initially into the Store on page load
+Actions.initialize();
 
 ReactDOM.render(
   <React.StrictMode>

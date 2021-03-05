@@ -3,22 +3,24 @@ import Constants from "./Constants.js";
 
 const Actions = {
   /*
-   * Select a different student to view
+   * Load initial data from the server
    */
-  selectStudent(student) {
+  initialize() {
     AppDispatcher.dispatch({
-      actionType: Constants.SELECT_STUDENT,
-      student
+      actionType: Constants.INITIALIZE
     });
   },
 
-  /*
-   * Make changes on the currently selected student
-   */
-  updateStudent(student) {
+  logReadingTime(minutes) {
     AppDispatcher.dispatch({
-      actionType: Constants.UPDATE_STUDENT,
-      student
+      actionType: Constants.LOG_READING_TIME,
+      minutes
+    });
+  },
+
+  logStoryCompleted() {
+    AppDispatcher.dispatch({
+      actionType: Constants.LOG_STORY_COMPLETED
     });
   }
 };

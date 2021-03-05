@@ -1,26 +1,13 @@
-import Immutable from "immutable";
-
-const TrophyRecord = Immutable.Record({
-  id: 0,
-  name: "",
-  description: "",
-  // (StudentModel) -> bool
-  hasAchieved: (student) => false
-});
-
 class TrophyModel {
-  constructor(id, name, description, hasAchieved) {
-    this._record = new TrophyRecord()
-      .set("id", id)
-      .set("name", name)
-      .set("description", description)
-      .set("hasAchieved", hasAchieved);
-  }
+  static fromServer({ id, name, description }) {
+    const trophy = new TrophyModel();
 
-  get id() { return this._record.id; }
-  get name() { return this._record.name; }
-  get description() { return this._record.description; }
-  get hasAchieved() { return this._record.hasAchieved; }
+    trophy.id = id;
+    trophy.name = name;
+    trophy.description = description;
+
+    return trophy;
+  }
 }
 
 export default TrophyModel;
