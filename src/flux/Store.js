@@ -4,36 +4,45 @@ import AppDispatcher from "./AppDispatcher.js";
 import Constants from "./Constants.js";
 
 const CHANGE_EVENT = "store_change";
+const _eventEmitter = new EventEmitter();
 
 // The selected student
 let _student = null;
 
-class Store extends EventEmitter {
+// Actions
+const setStudent = (student) => {
+  _student = student;
+  Store.emitChange();
+};
+
+const Store = {
   getData() {
     return {
       student: _student
     };
-  }
+  },
 
   emitChange() {
-    super.emitChange(CHANGE_EVENT);
-  }
+    _eventEmitter.emit(CHANGE_EVENT);
+  },
 
   addListener(callback) {
-    super.on(CHANGE_EVENT, callback);
-  }
+    _eventEmitter.on(CHANGE_EVENT, callback);
+  },
 
   removeListener(callback) {
-    super.removeListener(CHANGE_EVENT, callback);
+    _eventEmitter.removeListener(CHANGE_EVENT, callback);
   }
-}
+};
 
 AppDispatcher.register((action) => {
   switch(action.actionType) {
-    //JONTODO Fill in constants
+    case Constants.SET_STUDENT:
+      setStudent(action.student);
+      break;
+    default:
+      // No action
   }
 });
 
-const instance = new Store();
-
-export default instance;
+export default Store;
