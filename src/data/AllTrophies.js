@@ -1,6 +1,7 @@
 import Immutable from "immutable";
 import TrophyModel from "../models/TrophyModel.js";
 
+//JONTODO Figure out how to make the logic testable
 const AllTrophies = Immutable.List([
   new TrophyModel(1, "Serious Reader", "Read 10 stories",
     student => student.storiesRead >= 10),

@@ -1,34 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AllStudents from "../data/AllStudents.js";
-import AllTrophies from "../data/AllTrophies.js";
-import Actions from "../flux/Actions.js";
 import StudentModel from "../models/StudentModel.js";
+import StudentSelection from "./StudentSelection.jsx";
+import Trophies from "./Trophies.jsx";
 
+//JONTODO Use Context?
 const propTypes = {
   student: PropTypes.instanceOf(StudentModel)
 };
 
 const TrophyPage = (props) => {
-  const setStudent = React.useCallback((event) => {
-    const id = Number(event.target.value);
-    const student = AllStudents.find(s => s.id == id);
+  let trophies = null;
+  if (props.student) {
+    trophies = <Trophies student={props.student} />;
+  }
 
-    Actions.setStudent(student);
-  }, []);
-
-  const students = AllStudents.map(student => {
-    return <option key={student.id} value={student.id}>{student.name}</option>;
-  });
-
-  const value = props.student
-    ? props.student.id
-    : "";
-
-  return <select value={value} onChange={setStudent}>
-    <option key="empty"></option>
-    {students}
-  </select>
+  return <div>
+    <StudentSelection student={props.student} />
+    {trophies}
+  </div>;
 };
 
+TrophyPage.propTypes = propTypes;
 export default TrophyPage;

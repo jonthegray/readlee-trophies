@@ -1,5 +1,4 @@
 import { EventEmitter } from "events";
-import Actions from "./Actions.js";
 import AppDispatcher from "./AppDispatcher.js";
 import Constants from "./Constants.js";
 
