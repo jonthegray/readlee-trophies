@@ -1,21 +1,17 @@
 import { EventEmitter } from "events";
-import Immutable from "immutable";
-import AllStudents from "../data/AllStudents.js";
-import AllTrophies from "../data/AllTrophies.js";
 import Actions from "./Actions.js";
 import AppDispatcher from "./AppDispatcher.js";
 import Constants from "./Constants.js";
 
 const CHANGE_EVENT = "store_change";
 
-let _students = AllStudents;
-let _trophies = AllTrophies;
+// The selected student
+let _student = null;
 
 class Store extends EventEmitter {
   getData() {
     return {
-      students: _students,
-      trophies: _trophies
+      student: _student
     };
   }
 

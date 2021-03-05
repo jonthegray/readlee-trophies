@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/App.css";
 import Store from "./flux/Store.js";
-import Trophies from "./views/Trophies.jsx";
+import TrophyPage from "./views/TrophyPage.jsx";
 
 /*
  * App is a non-presentational component solely for communicating with the Store
@@ -23,7 +23,7 @@ const App = () => {
     return () => Store.removeListener(storeChanged);
   }, []);
 
-  return <Trophies {...data} />;
+  return <TrophyPage {...data} />;
 };
 
 export default App;
