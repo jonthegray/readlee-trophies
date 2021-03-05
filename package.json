@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^12.8.1",
     "flux": "^4.0.1",
     "immutable": "^4.0.0-rc.12",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-immutable-proptypes": "^2.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.0"
   },

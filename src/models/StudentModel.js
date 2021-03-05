@@ -1,6 +1,6 @@
 import Immutable from "immutable";
 
-class StudentRecord = Immutable.Record({
+const StudentRecord = Immutable.Record({
   id: 0,
   name: "",
   // The number of minutes spent reading
@@ -10,8 +10,12 @@ class StudentRecord = Immutable.Record({
 });
 
 class StudentModel {
-  constructor() {
-    this._record = new StudentRecord();
+  constructor(id, name, readingTime, storiesRead) {
+    this._record = new StudentRecord()
+      .set("id", id)
+      .set("name", name)
+      .set("readingTime", readingTime)
+      .set("storiesRead", storiesRead);
   }
 
   get id() { return this._record.id; }
