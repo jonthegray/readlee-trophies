@@ -1,5 +1,6 @@
 const Constants = {
-  SET_STUDENT: "SET_STUDENT"
+  SELECT_STUDENT: "SELECT_STUDENT",
+  UPDATE_STUDENT: "UPDATE_STUDENT"
 };
 
 export default Constants;

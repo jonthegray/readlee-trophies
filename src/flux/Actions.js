@@ -2,9 +2,22 @@ import AppDispatcher from "./AppDispatcher.js";
 import Constants from "./Constants.js";
 
 const Actions = {
-  setStudent(student) {
+  /*
+   * Select a different student to view
+   */
+  selectStudent(student) {
     AppDispatcher.dispatch({
-      actionType: Constants.SET_STUDENT,
+      actionType: Constants.SELECT_STUDENT,
+      student
+    });
+  },
+
+  /*
+   * Make changes on the currently selected student
+   */
+  updateStudent(student) {
+    AppDispatcher.dispatch({
+      actionType: Constants.UPDATE_STUDENT,
       student
     });
   }
