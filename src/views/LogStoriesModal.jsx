@@ -21,7 +21,7 @@ const LogStoriesModal = (props) => {
       return;
 
     Actions.logStories(count);
-    props.hide();
+    // Parent hides the modal when the Action succeeds
   };
   
   const storyIes = props.currentCount > 1 ? "stories" : "story";

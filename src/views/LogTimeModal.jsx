@@ -21,7 +21,7 @@ const LogTimeModal = (props) => {
       return;
 
     Actions.logReadingTime(minutes);
-    props.hide();
+    // Parent hides the modal when the Action succeeds
   };
 
   const minuteS = props.currentMinutes > 1 ? "minutes" : "minute";

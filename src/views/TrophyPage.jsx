@@ -18,17 +18,26 @@ const TrophyPage = (props) => {
   const [showStoriesModal, setShowStoriesModal] = React.useState(false);
   const [showTimeModal, setShowTimeModal] = React.useState(false);
 
-  let trophies = <div className="loading">Loading trophies...</div>;
-  if (props.student) {
-    trophies = <Trophies achievements={props.student.achievements}
-                         allTrophies={props.allTrophies} />;
-  }
-
   const openStoriesModal = React.useCallback(() => setShowStoriesModal(true), []);
   const hideStoriesModal = React.useCallback(() => setShowStoriesModal(false), []);
 
   const openTimeModal = React.useCallback(() => setShowTimeModal(true), []);
   const hideTimeModal = React.useCallback(() => setShowTimeModal(false), []);
+
+  // Hide modals when the student gets updated (assume the update succeeded)
+  React.useEffect(() => {
+    if (showStoriesModal)
+      hideStoriesModal();
+
+    if (showTimeModal)
+      hideTimeModal();
+  }, [props.student]);
+
+  let trophies = <div className="loading">Loading trophies...</div>;
+  if (props.student) {
+    trophies = <Trophies achievements={props.student.achievements}
+                         allTrophies={props.allTrophies} />;
+  }
 
   let storiesModal = null;
   if (showStoriesModal) {

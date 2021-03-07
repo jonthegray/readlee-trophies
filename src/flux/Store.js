@@ -39,15 +39,15 @@ const initialize = async () => {
     });
 };
 
-const logReadingTime = (minutes) => {
-  const newStudent = Server.logReadingTime(_student.id, minutes);
+const logReadingTime = async (minutes) => {
+  const newStudent = await Server.logReadingTime(_student.id, minutes);
   _student = _student.updateFromServer(newStudent, _allTrophies);
 
   Store.emitChange();
 };
 
-const logStories = (count) => {
-  const newStudent = Server.logStories(_student.id, count);
+const logStories = async (count) => {
+  const newStudent = await Server.logStories(_student.id, count);
   _student = _student.updateFromServer(newStudent, _allTrophies);
 
   Store.emitChange();
