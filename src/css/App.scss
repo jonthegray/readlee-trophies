@@ -1,10 +1,15 @@
 @import "CustomTheme";
 @import "Font";
 
-$size-title: 28px;
-$size-body: 20px;
+$header-height: 20px;
+$body-font-size: 20px;
+$title-font-size: 28px;
 
-//JONTODO Mobile styles?
+$m-max-width: 600px;
+$m-header-height: 16px;
+$m-body-font-size: 16px;
+$m-title-font-size: 24px;
+
 body {
   color: #222;
   margin: 0;
@@ -17,38 +22,68 @@ body {
   > header,
   #content {
     padding: 0 100px;
+
+    @media (max-width: $m-max-width) {
+      padding: 0 20px;
+    }
   }
 
   > header {
     display: flex;
     justify-content: space-between;
-    line-height: 20px;
+    line-height: $header-height;
     padding-top: 15px;
     padding-bottom: 30px;
 
+    @media (max-width: $m-max-width) {
+      line-height: $m-header-height;
+      padding-bottom: 15px;
+    }
+
     img {
-      height: 20px;
+      height: $header-height;
+
+      @media (max-width: $m-max-width) {
+        height: $m-header-height;
+      }
     }
 
     .name {
       display: inline-block;
-      font-size: 16px;
+      font-size: $header-height;
+
+      @media (max-width: $m-max-width) {
+        font-size: $m-header-height;
+      }
     }
 
     svg {
-      font-size: 20px;
+      font-size: $header-height;
       margin-left: 10px;
       vertical-align: top;
+
+      @media (max-width: $m-max-width) {
+        font-size: $m-header-height;
+      }
     }
   }
 
   #content {
-    font-size: $size-body;
+    font-size: $body-font-size;
+
+    @media (max-width: $m-max-width) {
+      font-size: $m-body-font-size;
+    }
 
     .title-header {
-      font-size: $size-title;
+      font-size: $title-font-size;
       font-weight: bold;
       margin-bottom: 20px;
+
+      @media (max-width: $m-max-width) {
+        font-size: $m-title-font-size;
+        margin-bottom: 15px;
+      }
     }
 
     .loading,
@@ -62,18 +97,49 @@ body {
         display: flex;
         margin-top: 15px;
 
+        @media (max-width: $m-max-width) {
+          flex-flow: column;
+          margin-top: 10px;
+        }
+
         .trophy {
-          font-size: 20px;
+          font-size: $body-font-size;
           padding: 20px;
           width: 200px;
 
+          @media (max-width: $m-max-width) {
+            align-items: center;
+            display: flex;
+            flex-flow: row-reverse;
+            font-size: $m-body-font-size;
+            padding: 15px;
+            width: 210px;
+          }
+
           & + .trophy {
             margin-left: 50px;
+
+            @media (max-width: $m-max-width) {
+              margin-left: 0;
+              margin-top: 15px;
+            }
+          }
+
+          @media (max-width: $m-max-width) {
+            .name {
+              flex-grow: 1;
+            }
           }
 
           svg {
-            font-size: 40px;
+            font-size: 2 * $body-font-size;
             margin-top: 15px;
+
+            @media (max-width: $m-max-width) {
+              font-size: 2 * $m-body-font-size;
+              margin-top: 0;
+              margin-right: 15px;
+            }
           }
         }
       }

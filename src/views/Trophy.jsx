@@ -17,7 +17,7 @@ const Trophy = (props) => {
   return <Button variant={variant}
                  className="trophy"
                  onClick={props.openTrophy}>
-    <div>{props.model.name}</div>
+    <div className="name">{props.model.name}</div>
     <div><FontAwesomeIcon icon={faTrophy} /></div>
   </Button>;
 };
