@@ -29,8 +29,8 @@ class StudentServerModel {
     this.recalcAchievements();
   }
 
-  logStoryCompleted() {
-    this.storiesRead += 1;
+  logStories(count) {
+    this.storiesRead += count;
     this.recalcAchievements();
   }
 

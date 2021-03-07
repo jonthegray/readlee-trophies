@@ -40,8 +40,8 @@ const logReadingTime = (minutes) => {
   Store.emitChange();
 };
 
-const logStoryCompleted = () => {
-  const newStudent = Server.logStoryCompleted(_student.id);
+const logStories = (count) => {
+  const newStudent = Server.logStories(_student.id, count);
 
   // If no new trophies were achieved, we don't need to re-render
   if (newStudent.achievements.length === _student.achievements.length)
@@ -83,8 +83,8 @@ AppDispatcher.register((action) => {
     case Constants.LOG_READING_TIME:
       logReadingTime(action.minutes);
       break;
-    case Constants.LOG_STORY_COMPLETED:
-      logStoryCompleted();
+    case Constants.LOG_STORIES:
+      logStories(action.count);
       break;
     default:
       // No action

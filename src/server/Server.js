@@ -27,9 +27,9 @@ const Server = {
     return student.clientData();
   },
 
-  logStoryCompleted(studentId) {
+  logStories(studentId, count) {
     const student = AllStudents.find(s => s.id === studentId);
-    student.logStoryCompleted();
+    student.logStories(count);
 
     return student.clientData();
   }

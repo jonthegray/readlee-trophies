@@ -1,7 +1,7 @@
 const Constants = {
   INITIALIZE: "INITIALIZE",
   LOG_READING_TIME: "LOG_READING_TIME",
-  LOG_STORY_COMPLETED: "LOG_STORY_COMPLETED"
+  LOG_STORIES: "LOG_STORIES"
 };
 
 export default Constants;

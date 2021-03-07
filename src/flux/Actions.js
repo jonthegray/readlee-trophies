@@ -18,9 +18,10 @@ const Actions = {
     });
   },
 
-  logStoryCompleted() {
+  logStories(count) {
     AppDispatcher.dispatch({
-      actionType: Constants.LOG_STORY_COMPLETED
+      actionType: Constants.LOG_STORIES,
+      count
     });
   }
 };
