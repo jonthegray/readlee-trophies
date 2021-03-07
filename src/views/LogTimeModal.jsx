@@ -11,6 +11,7 @@ const propTypes = {
 
 const LogTimeModal = (props) => {
   const [minutes, setMinutes] = React.useState(null);
+  const [isProcessing, setIsProcessing] = React.useState(false);
 
   const inputChanged = React.useCallback((event) => {
     setMinutes(Number(event.target.value));
@@ -21,6 +22,7 @@ const LogTimeModal = (props) => {
       return;
 
     Actions.logReadingTime(minutes);
+    setIsProcessing(true);
     // Parent hides the modal when the Action succeeds
   };
 
@@ -41,11 +43,16 @@ const LogTimeModal = (props) => {
       </div>
       <input type="number"
              value={minutes || ""}
+             disabled={isProcessing}
              onChange={inputChanged} />
     </Modal.Body>
     <Modal.Footer>
-      <Button variant="primary" onClick={save}>Save</Button>
-      <Button variant="outline-secondary" onClick={props.hide}>Cancel</Button>
+      <Button variant="primary" disabled={isProcessing} onClick={save}>
+        Save
+      </Button>
+      <Button variant="outline-secondary" disabled={isProcessing} onClick={props.hide}>
+        Cancel
+      </Button>
     </Modal.Footer>
   </Modal>
 };

@@ -11,6 +11,7 @@ const propTypes = {
 
 const LogStoriesModal = (props) => {
   const [count, setCount] = React.useState(null);
+  const [isProcessing, setIsProcessing] = React.useState(false);
 
   const inputChanged = React.useCallback((event) => {
     setCount(Number(event.target.value));
@@ -21,6 +22,7 @@ const LogStoriesModal = (props) => {
       return;
 
     Actions.logStories(count);
+    setIsProcessing(true);
     // Parent hides the modal when the Action succeeds
   };
   
@@ -41,11 +43,16 @@ const LogStoriesModal = (props) => {
       </div>
       <input type="number"
              value={count || ""}
+             disabled={isProcessing}
              onChange={inputChanged} />
     </Modal.Body>
     <Modal.Footer>
-      <Button variant="primary" onClick={save}>Save</Button>
-      <Button variant="outline-secondary" onClick={props.hide}>Cancel</Button>
+      <Button variant="primary" disabled={isProcessing} onClick={save}>
+        Save
+      </Button>
+      <Button variant="outline-secondary" disabled={isProcessing} onClick={props.hide}>
+        Cancel
+      </Button>
     </Modal.Footer>
   </Modal>
 };
