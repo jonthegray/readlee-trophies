@@ -7,6 +7,7 @@ let _loggedInStudent = AllStudents[0];
  * Simulation of back end and calls from the client
  * (usually these would be AJAX/async but this is sufficient for now)
  */
+//JONTODO Make these async functions with a delay for processing time
 const Server = {
   // getAllStudents() { return AllStudents.map(s => s.clientData()); },
 

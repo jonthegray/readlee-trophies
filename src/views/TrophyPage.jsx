@@ -22,6 +22,7 @@ const TrophyPage = (props) => {
 
   const logReadingTime = () => {
     //JONTODO Don't hardcode the value
+    //JONTODO Add alert/toast for logging data
     Actions.logReadingTime(10);
   };
 
