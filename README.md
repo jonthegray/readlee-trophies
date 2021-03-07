@@ -10,6 +10,14 @@
   * 7 hardcoded students are provided
   * Switching between students preserves reading time and story count for each student
 
+## Known warnings
+
+* Opening a modal causes a warning about using findDOMNode(). This is inside the
+react-bootstrap Modal code.
+* TrophyPage.jsx has a warning about missing dependencies in useEffect(). This is due
+to a linter limitation. A developer looking at the code can see that the missing
+dependencies are the same across all renders, so technically aren't necessary.
+
 ## npm Dependencies
 
 * Font Awesome: free library of common icons
@@ -32,12 +40,14 @@ to try them out.
 * Like I said before, I enjoyed the open-ended nature of the exercise. It was fun to
 build the page from scratch, then add more features and even learn new things along
 the way.
-* I'm pretty new to create-react-app, but it was super easy to get a solution up and
-running.
 * I think the UI is nice and clean, and I'm glad I was able to find the Readlee logo
 and app font.
 * I added some UI polish like disabling modal content when "processing"--small things
 that make the whole page experience easier and smoother.
+* I'm pretty new to create-react-app, but it was super easy to get a solution up and
+running.
+* This was my first time using React StrictMode. The warnings were helpful and
+provided some code linting without having to set that up separately.
 * The components (and props/state) should be structured in a way that minimizes
 re-renders. I didn't do a full audit, but added and confirmed some logic.
 * I've been working with functional React components and hooks for about a year. I'm
@@ -72,6 +82,7 @@ and behavior
 * Build out a testing framework and add unit tests for special logic--even refactor
 existing code to be more easily testable. I've used jest in the past for unit tests
 and enzyme for component/snapshot tests.
-* Learn more about TypeScript and incorporate it
+* Learn more about tools like TypeScript, Redux, and other modern data flow and
+client-server communication tools that would make the app easier to maintain
 * Dig into the "create-react-app magic" to see if customizing things like the bundling
 process would improve the user experience.
