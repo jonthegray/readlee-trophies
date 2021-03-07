@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Actions from "../flux/Actions.js";
 import StudentModel from "../models/StudentModel.js";
 import TrophyModel from "../models/TrophyModel.js";
+import PageHeader from "./PageHeader.jsx";
 import Trophies from "./Trophies.jsx";
 
 //JONTODO Use Context?
@@ -22,7 +23,8 @@ const TrophyPage = (props) => {
     Actions.logReadingTime(10);
   };
 
-  return <div>
+  return <React.Fragment>
+    <PageHeader />
     {trophies}
     <button onClick={logReadingTime} disabled={!props.student}>
       Log Reading Time
@@ -30,7 +32,7 @@ const TrophyPage = (props) => {
     <button onClick={Actions.logStoryCompleted} disabled={!props.student}>
       Log Finished Reading
     </button>
-  </div>;
+  </React.Fragment>;
 };
 
 TrophyPage.propTypes = propTypes;

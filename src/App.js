@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/App.css";
+import "./css/App.scss";
 import Store from "./flux/Store.js";
 import TrophyPage from "./views/TrophyPage.jsx";
 
