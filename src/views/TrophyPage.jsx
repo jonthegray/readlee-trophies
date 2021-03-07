@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Actions from "../flux/Actions.js";
 import StudentModel from "../models/StudentModel.js";
 import TrophyModel from "../models/TrophyModel.js";
@@ -47,7 +46,7 @@ const TrophyPage = (props) => {
       <div>{countText}</div>
       {trophies}
       <div>Want to achieve more? Keep reading and log your progress!</div>
-      <ButtonGroup>
+      <div className="buttons">
         <Button variant="outline-secondary"
                 disabled={!props.student}
                 onClick={logReadingTime}>
@@ -58,7 +57,7 @@ const TrophyPage = (props) => {
                 onClick={Actions.logStoryCompleted}>
           Log Finished Reading
         </Button>
-      </ButtonGroup>
+      </div>
     </div>
   </React.Fragment>;
 };

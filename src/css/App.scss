@@ -1,15 +1,14 @@
 @import "CustomTheme";
+@import "Font";
 
 $size-title: 28px;
 $size-body: 20px;
 
-//JONTODO Use metropolis font
-//JONTODO Switch to blue logo and figure out theme colors app.readlee.com
+//JONTODO Mobile styles?
 body {
+  color: #222;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Metropolis", "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,12 +22,12 @@ body {
   > header {
     display: flex;
     justify-content: space-between;
-    line-height: 30px;
+    line-height: 20px;
     padding-top: 15px;
     padding-bottom: 30px;
 
     img {
-      height: 30px;
+      height: 20px;
     }
 
     .name {
@@ -38,7 +37,7 @@ body {
 
     svg {
       font-size: 20px;
-      margin: 5px 0 5px 10px;
+      margin-left: 10px;
       vertical-align: top;
     }
   }
@@ -63,11 +62,7 @@ body {
         padding: 20px;
         width: 200px;
 
-        &.btn-primary {
-          color: white;
-        }
-
-        &:not(:first-child) {
+        & + .trophy {
           margin-left: 50px;
         }
 
@@ -78,8 +73,12 @@ body {
       }
     }
 
-    .btn-group {
+    .buttons {
       margin-top: 15px;
+
+      button + button {
+        margin-left: 10px;
+      }
     }
   }
 }

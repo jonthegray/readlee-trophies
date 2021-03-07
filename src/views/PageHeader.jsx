@@ -9,7 +9,7 @@ const propTypes = {
 
 const PageHeader = (props) => {
   return <header>
-    <img alt="Readlee logo" src="/Readlee+Logo+Red.png" />
+    <img alt="Readlee logo" src="/readlee_logo.png" />
     <div>
       <span className="name">{props.studentName}</span>
       <FontAwesomeIcon icon={faUserCircle} />
