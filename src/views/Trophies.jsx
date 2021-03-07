@@ -6,7 +6,7 @@ import Trophy from "./Trophy.jsx";
 import TrophyModal from "./TrophyModal.jsx";
 
 const propTypes = {
-  achievements: PropTypes.arrayOf(AchievementModel).isRequired,
+  achievements: PropTypes.arrayOf(PropTypes.instanceOf(AchievementModel)).isRequired,
   allTrophies: PropTypes.arrayOf(PropTypes.instanceOf(TrophyModel)).isRequired
 };
 
