@@ -1,5 +1,6 @@
 import StudentServerModel from "../models/StudentServerModel.js";
 
+//JONTODO Make real names
 const AllStudents = [
   new StudentServerModel(1, "NoAchievements Student", 25, 0),
   new StudentServerModel(2, "OneHour Student", 60, 5),

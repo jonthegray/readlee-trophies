@@ -24,7 +24,7 @@ const TrophyPage = (props) => {
   };
 
   return <React.Fragment>
-    <PageHeader />
+    <PageHeader studentName={props.student.name} />
     {trophies}
     <button onClick={logReadingTime} disabled={!props.student}>
       Log Reading Time
