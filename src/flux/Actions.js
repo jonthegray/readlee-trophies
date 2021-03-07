@@ -11,6 +11,9 @@ const Actions = {
     });
   },
 
+  /*
+   * Log time spent reading
+   */
   logReadingTime(minutes) {
     AppDispatcher.dispatch({
       actionType: Constants.LOG_READING_TIME,
@@ -18,6 +21,9 @@ const Actions = {
     });
   },
 
+  /*
+   * Log number of stories completed
+   */
   logStories(count) {
     AppDispatcher.dispatch({
       actionType: Constants.LOG_STORIES,

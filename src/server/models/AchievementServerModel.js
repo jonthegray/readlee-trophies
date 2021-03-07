@@ -8,7 +8,7 @@ class AchievementServerModel {
   }
 
   /*
-   * JS object representing the data that would be sent to the client
+   * JS object representing the data that is sent to the client
    */
   clientData() {
     return {

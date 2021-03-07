@@ -10,22 +10,6 @@ class StudentServerModel {
     this.achievements = null;
   }
 
-  /*
-   * JS object representing the data that would be sent to the client
-   */
-  clientData() {
-    if (!this.achievements)
-      this.recalcAchievements();
-
-    return {
-      id: this.id,
-      name: this.name,
-      readingTime: this.readingTime,
-      storyCount: this.storyCount,
-      achievements: this.achievements.map(a => a.clientData())
-    };
-  }
-
   logReadingTime(minutes) {
     this.readingTime += minutes;
     this.recalcAchievements();
@@ -53,6 +37,23 @@ class StudentServerModel {
 
     this.achievements = current.concat(newAchievements);
   }
+
+  /*
+   * JS object representing the data that is sent to the client
+   */
+  clientData() {
+    if (!this.achievements)
+      this.recalcAchievements();
+
+    return {
+      id: this.id,
+      name: this.name,
+      readingTime: this.readingTime,
+      storyCount: this.storyCount,
+      achievements: this.achievements.map(a => a.clientData())
+    };
+  }
+
 }
 
 export default StudentServerModel;

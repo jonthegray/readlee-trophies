@@ -1,3 +1,6 @@
+/*
+ * String constants for Flux Actions
+ */
 const Constants = {
   INITIALIZE: "INITIALIZE",
   LOG_READING_TIME: "LOG_READING_TIME",

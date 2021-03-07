@@ -14,11 +14,9 @@ const propTypes = {
 const Trophy = (props) => {
   const variant = props.isAchieved ? "primary" : "outline-secondary";
 
-  return <Button variant={variant}
-                 className="trophy"
-                 onClick={props.openTrophy}>
+  return <Button variant={variant} className="trophy" onClick={props.openTrophy}>
     <div className="name">{props.model.name}</div>
-    <div><FontAwesomeIcon icon={faTrophy} /></div>
+    <FontAwesomeIcon icon={faTrophy} />
   </Button>;
 };
 

@@ -37,6 +37,7 @@ const Trophies = (props) => {
   }
 
   const achieved = props.achievements.map(a => renderTrophy(a.trophy, true));
+
   const notAchieved = props.allTrophies
     .filter(t => !props.achievements.find(a => a.trophy.id === t.id))
     .map(t => renderTrophy(t, false));
