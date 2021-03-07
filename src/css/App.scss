@@ -8,13 +8,17 @@ body {
 }
 
 #root {
-  padding: 0 100px;
+  > header,
+  #content {
+    padding: 0 100px;
+  }
 
   > header {
     display: flex;
     justify-content: space-between;
     line-height: 30px;
-    padding: 15px 0;
+    padding-top: 15px;
+    padding-bottom: 30px;
 
     img {
       height: 30px;
@@ -22,14 +26,21 @@ body {
 
     .name {
       display: inline-block;
-      font-size: 20px;
+      font-size: 16px;
     }
 
     svg {
-      font-size: 24px;
+      font-size: 20px;
       margin-left: 10px;
-      padding: 3px 0;
+      padding: 5px 0;
       vertical-align: top;
+    }
+  }
+
+  #content {
+    .title-header {
+      font-size: 28px;
+      font-weight: bold;
     }
   }
 }

@@ -25,13 +25,16 @@ const TrophyPage = (props) => {
 
   return <React.Fragment>
     <PageHeader studentName={props.student.name} />
-    {trophies}
-    <button onClick={logReadingTime} disabled={!props.student}>
-      Log Reading Time
-    </button>
-    <button onClick={Actions.logStoryCompleted} disabled={!props.student}>
-      Log Finished Reading
-    </button>
+    <div id="content">
+      <div className="title-header">View Trophies</div>
+      {trophies}
+      <button onClick={logReadingTime} disabled={!props.student}>
+        Log Reading Time
+      </button>
+      <button onClick={Actions.logStoryCompleted} disabled={!props.student}>
+        Log Finished Reading
+      </button>
+    </div>
   </React.Fragment>;
 };
 
