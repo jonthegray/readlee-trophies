@@ -86,3 +86,24 @@ and enzyme for component/snapshot tests.
 client-server communication tools that would make the app easier to maintain
 * Dig into the "create-react-app magic" to see if customizing things like the bundling
 process would improve the user experience.
+
+## Retrieving results from Firestore
+
+I'm not familiar with Firestore, so my first steps would be poking around the website,
+looking at code examples, and maybe watching the introductory videos they provide.
+Additionally, I'd want to have discussions with the lead engineer and other back-end
+engineers familiar with Firestore or other needs and approaches to storing and
+organizing the data.
+
+After that introduction, and/or in the absence of any other resources on the team
+to lead the Firestore integration, an initial plan might be:
+
+* Determine whether a Cloud Firestore or Realtime Database approach makes sense
+* Add some hardcoded data into Firestore (in any format)
+* Retrieve the hardcoded data from Firestore
+* Modify the hardcoded data from the client
+* Implement data model for one class (e.g. Student) in Firestore
+* Retrieve the modeled class all the way into a client-side JS model
+* Implement the full data model (Student, Trophy, Achievement) in Firestore
+* Retrieve the fully modeled data all the way into a client-side JS model
+* Modify the fully modeled data from the client (e.g. log additional reading time)
