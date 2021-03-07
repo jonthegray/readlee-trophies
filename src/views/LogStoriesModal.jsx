@@ -26,7 +26,7 @@ const LogStoriesModal = (props) => {
   
   const storyIes = props.currentCount > 1 ? "stories" : "story";
 
-  let timeText = props.currentCount
+  let countText = props.currentCount
     ? `You've already read ${props.currentCount} ${storyIes}. `
     : "You haven't read any stories yet. ";
 
@@ -36,7 +36,7 @@ const LogStoriesModal = (props) => {
     </Modal.Header>
     <Modal.Body>
       <div>
-        {timeText}
+        {countText}
         How many more stories have you read since last time?
       </div>
       <input type="number"

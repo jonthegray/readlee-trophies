@@ -20,7 +20,8 @@ const TrophyPage = (props) => {
 
   let trophies = null;
   if (props.student) {
-    trophies = <Trophies student={props.student} allTrophies={props.allTrophies} />;
+    trophies = <Trophies achievements={props.student.achievements}
+                         allTrophies={props.allTrophies} />;
   }
 
   const openStoriesModal = React.useCallback(() => setShowStoriesModal(true), []);
@@ -36,8 +37,8 @@ const TrophyPage = (props) => {
     countText = "You don't have any trophies yet. Click each trophy to learn how to achieve it!";
 
   } else if (trophyCount < props.allTrophies.length) {
-    const trophyText = trophyCount > 1 ? "trophies" : "trophy";
-    countText = `Great! You have ${trophyCount} ${trophyText}. Keep up the good work!`;
+    const trophyIes = trophyCount > 1 ? "trophies" : "trophy";
+    countText = `Great! You have ${trophyCount} ${trophyIes}. Keep up the good work!`;
 
   } else {
     countText = "Fantastic! You've achieved all the trophies!"
@@ -51,7 +52,7 @@ const TrophyPage = (props) => {
 
   let timeModal = null;
   if (showTimeModal) {
-    timeModal = <LogTimeModal currentTime={props.student.readingTime}
+    timeModal = <LogTimeModal currentMinutes={props.student.readingTime}
                               hide={hideTimeModal} />;
   }
 

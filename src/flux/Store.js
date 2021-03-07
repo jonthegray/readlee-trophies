@@ -10,14 +10,14 @@ const _eventEmitter = new EventEmitter();
 
 // Simulate starting with empty data, then getting it from the server on page
 // load
-let _student = null;
 let _allTrophies = [];
+let _student = null;
 
 /*
  * Helper function to change the logged-in user
  */
 window.changeStudent = (id) => {
-  _student = StudentModel.fromServer(Server.changeStudent(id), _allTrophies);
+  _student = _student.updateFromServer(Server.changeStudent(id), _allTrophies);
   Store.emitChange();
 };
 
@@ -25,29 +25,21 @@ window.changeStudent = (id) => {
  * Action handlers
  */
 const initialize = () => {
-  _student = StudentModel.fromServer(Server.getLoggedInStudent());
   _allTrophies = Server.getAllTrophies().map(TrophyModel.fromServer);
+  _student = new StudentModel().updateFromServer(Server.getLoggedInStudent(), _allTrophies);
 };
 
 const logReadingTime = (minutes) => {
   const newStudent = Server.logReadingTime(_student.id, minutes);
+  _student = _student.updateFromServer(newStudent, _allTrophies);
 
-  // If no new trophies were achieved, we don't need to re-render
-  if (newStudent.achievements.length === _student.achievements.length)
-    return;
-
-  _student = StudentModel.fromServer(newStudent, _allTrophies);
   Store.emitChange();
 };
 
 const logStories = (count) => {
   const newStudent = Server.logStories(_student.id, count);
+  _student = _student.updateFromServer(newStudent, _allTrophies);
 
-  // If no new trophies were achieved, we don't need to re-render
-  if (newStudent.achievements.length === _student.achievements.length)
-    return;
-
-  _student = StudentModel.fromServer(newStudent, _allTrophies);
   Store.emitChange();
 };
 

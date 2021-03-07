@@ -1,41 +1,54 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import TrophyModel from "../models/TrophyModel.js";
+import Actions from "../flux/Actions.js";
 
-//JONTODO
 const propTypes = {
-  trophy: PropTypes.instanceOf(TrophyModel).isRequired,
-  // The timestamp that the trophy was achieved (null if not achieved)
-  timestamp: PropTypes.string,
+  currentMinutes: PropTypes.number.isRequired,
   hide: PropTypes.func.isRequired
 };
 
-const TrophyModal = (props) => {
-  let body;
-  if (props.timestamp) {
-    const timeString = new Date(props.timestamp).toLocaleDateString() + " at "
-      + new Date(props.timestamp).toLocaleTimeString();
+const LogTimeModal = (props) => {
+  const [minutes, setMinutes] = React.useState(null);
 
-    body = <React.Fragment>
-      <div>{props.trophy.description}</div>
-      <div className="second-line">Achieved on {timeString}</div>
-    </React.Fragment>
+  const inputChanged = React.useCallback((event) => {
+    setMinutes(Number(event.target.value));
+  }, []);
 
-  } else {
-    body = <div>
-      {props.trophy.description}{" "}
-      (Not yet achieved)
-    </div>
-  }
+  const save = () => {
+    if (!minutes || minutes < 0)
+      return;
 
-  return <Modal id="trophy-modal" show={true} onHide={props.hide}>
+    Actions.logReadingTime(minutes);
+    props.hide();
+  };
+
+  const minuteS = props.currentMinutes > 1 ? "minutes" : "minute";
+
+  let timeText = props.currentCount
+    ? `You already have ${props.currentMinutes} ${minuteS} logged. `
+    : "You don't have any time logged yet. ";
+
+  return <Modal id="log-time-modal" show={true} onHide={props.hide}>
     <Modal.Header closeButton>
-      <Modal.Title>{props.trophy.name}</Modal.Title>
+      <Modal.Title>Log Reading Time</Modal.Title>
     </Modal.Header>
-    <Modal.Body>{body}</Modal.Body>
+    <Modal.Body>
+      <div>
+        {timeText}
+        How many more minutes have you spent reading since last time?
+      </div>
+      <input type="number"
+             value={minutes || ""}
+             onChange={inputChanged} />
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="primary" onClick={save}>Save</Button>
+      <Button variant="outline-secondary" onClick={props.hide}>Cancel</Button>
+    </Modal.Footer>
   </Modal>
 };
 
-TrophyModal.propTypes = propTypes;
-export default TrophyModal;
+LogTimeModal.propTypes = propTypes;
+export default React.memo(LogTimeModal);

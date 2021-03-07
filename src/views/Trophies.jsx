@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import StudentModel from "../models/StudentModel.js";
+import AchievementModel from "../models/AchievementModel.js";
 import TrophyModel from "../models/TrophyModel.js";
 import Trophy from "./Trophy.jsx";
 import TrophyModal from "./TrophyModal.jsx";
 
 const propTypes = {
-  student: PropTypes.instanceOf(StudentModel).isRequired,
+  achievements: PropTypes.arrayOf(AchievementModel).isRequired,
   allTrophies: PropTypes.arrayOf(PropTypes.instanceOf(TrophyModel)).isRequired
 };
 
@@ -22,14 +22,14 @@ const Trophies = (props) => {
 
   const hideModal = React.useCallback(() => setOpenTrophy(null), []);
 
-  const achieved = props.student.achievements.map(a => renderTrophy(a.trophy, true));
+  const achieved = props.achievements.map(a => renderTrophy(a.trophy, true));
   const notAchieved = props.allTrophies
-    .filter(t => !props.student.achievements.find(a => a.trophy.id === t.id))
+    .filter(t => !props.achievements.find(a => a.trophy.id === t.id))
     .map(t => renderTrophy(t, false));
 
   let trophyModal = null;
   if (openTrophy) {
-    const achievement = props.student.achievements.find(a => a.trophy.id === openTrophy.id);
+    const achievement = props.achievements.find(a => a.trophy.id === openTrophy.id);
     const timestamp = achievement ? achievement.timestamp : null;
 
     trophyModal = <TrophyModal trophy={openTrophy}
