@@ -1,3 +1,8 @@
+@import "CustomTheme";
+
+$size-title: 28px;
+$size-subtitle: 20px;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -31,16 +36,40 @@ body {
 
     svg {
       font-size: 20px;
-      margin-left: 10px;
-      padding: 5px 0;
+      margin: 5px 0 5px 10px;
       vertical-align: top;
     }
   }
 
   #content {
     .title-header {
-      font-size: 28px;
+      font-size: $size-title;
       font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .count {
+      font-size: $size-subtitle;
+      margin-bottom: 15px;
+    }
+
+    .trophies {
+      display: flex;
+
+      .trophy {
+        font-size: 20px;
+        padding: 20px;
+        width: 200px;
+
+        &:not(:first-child) {
+          margin-left: 50px;
+        }
+
+        svg {
+          font-size: 40px;
+          margin-top: 15px;
+        }
+      }
     }
   }
 }

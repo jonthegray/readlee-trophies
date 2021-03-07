@@ -23,10 +23,22 @@ const TrophyPage = (props) => {
     Actions.logReadingTime(10);
   };
 
+  const trophyCount = props.student.achievements.length;
+
+  let countText = "You don't have any trophies yet. Click each trophy to learn how to achieve it!"
+  if (trophyCount < props.allTrophies.length) {
+    const trophyText = trophyCount > 1 ? "trophies" : "trophy";
+    countText = `Great! You have ${trophyCount} ${trophyText}. Keep reading to achieve more!`;
+
+  } else {
+    countText = "Fantastic! You've achieved all the trophies!"
+  }
+
   return <React.Fragment>
     <PageHeader studentName={props.student.name} />
     <div id="content">
       <div className="title-header">View Trophies</div>
+      <div className="count">{countText}</div>
       {trophies}
       <button onClick={logReadingTime} disabled={!props.student}>
         Log Reading Time

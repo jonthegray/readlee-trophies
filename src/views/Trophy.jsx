@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
+import Button from "react-bootstrap/Button";
 import TrophyModel from "../models/TrophyModel.js";
 
 const propTypes = {
@@ -10,11 +13,10 @@ const propTypes = {
 const Trophy = (props) => {
   const achieved = props.isAchieved ? "ACHIEVED!" : "nope";
   
-  return <div>
-    <span>{achieved}</span>
-    <span>{props.model.name}</span>
-    <span>{props.model.description}</span>
-  </div>;
+  return <Button variant="outline-secondary" className="trophy">
+    <div>{props.model.name}</div>
+    <div><FontAwesomeIcon icon={faTrophy} /></div>
+  </Button>;
 };
 
 Trophy.propTypes = propTypes;

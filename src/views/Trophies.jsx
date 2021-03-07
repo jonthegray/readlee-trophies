@@ -18,7 +18,7 @@ const Trophies = (props) => {
     .filter(t => !props.student.achievements.find(a => a.trophy.id === t.id))
     .map(t => <Trophy key={t.id} model={t} isAchieved={false} />);
 
-  return <div>
+  return <div className="trophies">
     {achieved}
     {notAchieved}
   </div>;
