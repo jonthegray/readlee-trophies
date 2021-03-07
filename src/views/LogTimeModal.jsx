@@ -26,7 +26,7 @@ const LogTimeModal = (props) => {
 
   const minuteS = props.currentMinutes > 1 ? "minutes" : "minute";
 
-  let timeText = props.currentCount
+  let timeText = props.currentMinutes
     ? `You already have ${props.currentMinutes} ${minuteS} logged. `
     : "You don't have any time logged yet. ";
 
