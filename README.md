@@ -7,7 +7,7 @@
 * Click each trophy to open a modal showing the details
 * Log additional reading time and stories for each student with the buttons at the bottom
 * Switch between students (simulate changing the logged-in student) with `window.changeStudent(id)`
-  * 7 hardcoded students are provided
+  * 7 hardcoded students are provided (ids 1-7)
   * Switching between students preserves reading time and story count for each student
 
 ## Known warnings
@@ -86,6 +86,8 @@ and enzyme for component/snapshot tests.
 client-server communication tools that would make the app easier to maintain
 * Dig into the "create-react-app magic" to see if customizing things like the bundling
 process would improve the user experience.
+* Discuss with the team and learn about industry best practices for innovative ways
+to gamify reading.
 
 ## Retrieving results from Firestore
 
