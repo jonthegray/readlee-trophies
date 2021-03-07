@@ -18,7 +18,7 @@ const TrophyPage = (props) => {
   const [showStoriesModal, setShowStoriesModal] = React.useState(false);
   const [showTimeModal, setShowTimeModal] = React.useState(false);
 
-  let trophies = null;
+  let trophies = <div className="loading">Loading trophies...</div>;
   if (props.student) {
     trophies = <Trophies achievements={props.student.achievements}
                          allTrophies={props.allTrophies} />;
@@ -29,20 +29,6 @@ const TrophyPage = (props) => {
 
   const openTimeModal = React.useCallback(() => setShowTimeModal(true), []);
   const hideTimeModal = React.useCallback(() => setShowTimeModal(false), []);
-
-  const trophyCount = props.student.achievements.length;
-
-  let countText;
-  if (trophyCount === 0) {
-    countText = "You don't have any trophies yet. Click each trophy to learn how to achieve it!";
-
-  } else if (trophyCount < props.allTrophies.length) {
-    const trophyIes = trophyCount > 1 ? "trophies" : "trophy";
-    countText = `Great! You have ${trophyCount} ${trophyIes}. Keep up the good work!`;
-
-  } else {
-    countText = "Fantastic! You've achieved all the trophies!"
-  }
 
   let storiesModal = null;
   if (showStoriesModal) {
@@ -57,12 +43,11 @@ const TrophyPage = (props) => {
   }
 
   return <React.Fragment>
-    <PageHeader studentName={props.student.name} />
+    <PageHeader student={props.student} />
     <div id="content">
       <div className="title-header">View Trophies</div>
-      <div>{countText}</div>
       {trophies}
-      <div>Want to achieve more? Keep reading and log your progress!</div>
+      <div>Want more trophies? Keep reading and log your progress!</div>
       <div className="buttons">
         <Button variant="outline-secondary"
                 disabled={!props.student}

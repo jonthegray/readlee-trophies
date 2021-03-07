@@ -51,24 +51,30 @@ body {
       margin-bottom: 20px;
     }
 
+    .loading,
     .trophies {
-      align-items: flex-start;
-      display: flex;
-      margin-top: 15px;
-      height: 300px;
+      height: 350px;
+    }
 
-      .trophy {
-        font-size: 20px;
-        padding: 20px;
-        width: 200px;
+    .trophies {
+      .trophy-list {
+        align-items: flex-start;
+        display: flex;
+        margin-top: 15px;
 
-        & + .trophy {
-          margin-left: 50px;
-        }
+        .trophy {
+          font-size: 20px;
+          padding: 20px;
+          width: 200px;
 
-        svg {
-          font-size: 40px;
-          margin-top: 15px;
+          & + .trophy {
+            margin-left: 50px;
+          }
+
+          svg {
+            font-size: 40px;
+            margin-top: 15px;
+          }
         }
       }
     }

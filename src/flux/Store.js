@@ -24,9 +24,13 @@ window.changeStudent = (id) => {
 /*
  * Action handlers
  */
-const initialize = () => {
-  _allTrophies = Server.getAllTrophies().map(TrophyModel.fromServer);
+const initialize = async () => {
+  const trophies = await Server.getAllTrophies();
+  _allTrophies = trophies.map(TrophyModel.fromServer);
+
   _student = new StudentModel().updateFromServer(Server.getLoggedInStudent(), _allTrophies);
+
+  Store.emitChange();
 };
 
 const logReadingTime = (minutes) => {

@@ -22,6 +22,20 @@ const Trophies = (props) => {
 
   const hideModal = React.useCallback(() => setOpenTrophy(null), []);
 
+  const trophyCount = props.achievements.length;
+
+  let countText;
+  if (trophyCount === 0) {
+    countText = "You don't have any trophies yet. Click each trophy to learn how to achieve it!";
+
+  } else if (trophyCount < props.allTrophies.length) {
+    const trophyIes = trophyCount > 1 ? "trophies" : "trophy";
+    countText = `Great! You have ${trophyCount} ${trophyIes}. Keep up the good work!`;
+
+  } else {
+    countText = "Fantastic! You've achieved all the trophies!"
+  }
+
   const achieved = props.achievements.map(a => renderTrophy(a.trophy, true));
   const notAchieved = props.allTrophies
     .filter(t => !props.achievements.find(a => a.trophy.id === t.id))
@@ -38,9 +52,12 @@ const Trophies = (props) => {
   }
 
   return <div className="trophies">
-    {achieved}
-    {notAchieved}
-    {trophyModal}
+    {countText}
+    <div className="trophy-list">
+      {achieved}
+      {notAchieved}
+      {trophyModal}
+    </div>
   </div>;
 };
 

@@ -1,6 +1,8 @@
 import AllStudents from "./data/AllStudents.js";
 import AllTrophies from "./data/AllTrophies.js";
 
+const DELAY_MS = 500;
+
 let _loggedInStudent = AllStudents[0];
 
 /*
@@ -9,9 +11,13 @@ let _loggedInStudent = AllStudents[0];
  */
 //JONTODO Make these async functions with a delay for processing time
 const Server = {
-  // getAllStudents() { return AllStudents.map(s => s.clientData()); },
-
-  getAllTrophies() { return AllTrophies.map(t => t.clientData()); },
+  async getAllTrophies() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(AllTrophies.map(t => t.clientData()));
+      }, DELAY_MS)
+    });
+  },
 
   getLoggedInStudent() { return _loggedInStudent.clientData(); },
 
