@@ -2,11 +2,11 @@ import AllTrophies from "../data/AllTrophies.js";
 import AchievementServerModel from "./AchievementServerModel.js";
 
 class StudentServerModel {
-  constructor(id, name, readingTime, storiesRead) {
+  constructor(id, name, readingTime, storyCount) {
     this.id = id;
     this.name = name;
     this.readingTime = readingTime;
-    this.storiesRead = storiesRead;
+    this.storyCount = storyCount;
     this.achievements = null;
   }
 
@@ -20,6 +20,8 @@ class StudentServerModel {
     return {
       id: this.id,
       name: this.name,
+      readingTime: this.readingTime,
+      storyCount: this.storyCount,
       achievements: this.achievements.map(a => a.clientData())
     };
   }
@@ -30,7 +32,7 @@ class StudentServerModel {
   }
 
   logStories(count) {
-    this.storiesRead += count;
+    this.storyCount += count;
     this.recalcAchievements();
   }
 

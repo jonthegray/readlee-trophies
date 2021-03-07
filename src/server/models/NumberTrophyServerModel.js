@@ -13,7 +13,7 @@ class NumberTrophyServerModel extends TrophyServerModelBase {
    * Has the specified student achieved this trophy?
    */
   hasStudentAchieved(student) {
-    return student.storiesRead >= this.numStories;
+    return student.storyCount >= this.numStories;
   }
 }
 

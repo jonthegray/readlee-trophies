@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
-import Actions from "../flux/Actions.js";
 import StudentModel from "../models/StudentModel.js";
 import TrophyModel from "../models/TrophyModel.js";
+import LogStoriesModal from "./LogStoriesModal.jsx";
+import LogTimeModal from "./LogTimeModal.jsx";
 import PageHeader from "./PageHeader.jsx";
 import Trophies from "./Trophies.jsx";
 
@@ -14,22 +15,19 @@ const propTypes = {
 };
 
 const TrophyPage = (props) => {
+  const [showStoriesModal, setShowStoriesModal] = React.useState(false);
+  const [showTimeModal, setShowTimeModal] = React.useState(false);
+
   let trophies = null;
   if (props.student) {
     trophies = <Trophies student={props.student} allTrophies={props.allTrophies} />;
   }
 
-  const logReadingTime = () => {
-    //JONTODO Don't hardcode the value
-    //JONTODO Add alert/toast for logging data
-    Actions.logReadingTime(10);
-  };
+  const openStoriesModal = React.useCallback(() => setShowStoriesModal(true), []);
+  const hideStoriesModal = React.useCallback(() => setShowStoriesModal(false), []);
 
-  //JONTODO Allow input
-  //JONTODO Show current counts in modal
-  const logStories = () => {
-    Actions.logStories(1);
-  }
+  const openTimeModal = React.useCallback(() => setShowTimeModal(true), []);
+  const hideTimeModal = React.useCallback(() => setShowTimeModal(false), []);
 
   const trophyCount = props.student.achievements.length;
 
@@ -45,6 +43,18 @@ const TrophyPage = (props) => {
     countText = "Fantastic! You've achieved all the trophies!"
   }
 
+  let storiesModal = null;
+  if (showStoriesModal) {
+    storiesModal = <LogStoriesModal currentCount={props.student.storyCount}
+                                    hide={hideStoriesModal} />;
+  }
+
+  let timeModal = null;
+  if (showTimeModal) {
+    timeModal = <LogTimeModal currentTime={props.student.readingTime}
+                              hide={hideTimeModal} />;
+  }
+
   return <React.Fragment>
     <PageHeader studentName={props.student.name} />
     <div id="content">
@@ -55,15 +65,17 @@ const TrophyPage = (props) => {
       <div className="buttons">
         <Button variant="outline-secondary"
                 disabled={!props.student}
-                onClick={logReadingTime}>
+                onClick={openTimeModal}>
           Log Reading Time
         </Button>
         <Button variant="outline-secondary"
                 disabled={!props.student}
-                onClick={logStories}>
+                onClick={openStoriesModal}>
           Log Stories
         </Button>
       </div>
+      {storiesModal}
+      {timeModal}
     </div>
   </React.Fragment>;
 };
