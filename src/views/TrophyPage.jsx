@@ -25,6 +25,12 @@ const TrophyPage = (props) => {
     Actions.logReadingTime(10);
   };
 
+  //JONTODO Rename to logStories and allow multiple
+  //JONTODO Show current counts in modal
+  const logStoryCompleted = () => {
+    Actions.logStoryCompleted();
+  }
+
   const trophyCount = props.student.achievements.length;
 
   let countText;
@@ -54,8 +60,8 @@ const TrophyPage = (props) => {
         </Button>
         <Button variant="outline-secondary"
                 disabled={!props.student}
-                onClick={Actions.logStoryCompleted}>
-          Log Finished Reading
+                onClick={logStoryCompleted}>
+          Log Stories
         </Button>
       </div>
     </div>
