@@ -15,13 +15,19 @@ const Server = {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(AllTrophies.map(t => t.clientData()));
-      }, DELAY_MS)
+      }, DELAY_MS);
     });
   },
 
-  getLoggedInStudent() { return _loggedInStudent.clientData(); },
+  async getLoggedInStudent() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(_loggedInStudent.clientData());
+      }, DELAY_MS);
+    });
+  },
 
-  changeStudent(id) {
+  async changeStudent(id) {
     _loggedInStudent = AllStudents.find(s => s.id === id);
     return this.getLoggedInStudent();
   },

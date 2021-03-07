@@ -16,8 +16,10 @@ let _student = null;
 /*
  * Helper function to change the logged-in user
  */
-window.changeStudent = (id) => {
-  _student = _student.updateFromServer(Server.changeStudent(id), _allTrophies);
+window.changeStudent = async (id) => {
+  const newStudent = await Server.changeStudent(id);
+  _student = _student.updateFromServer(newStudent, _allTrophies);
+
   Store.emitChange();
 };
 
@@ -25,12 +27,16 @@ window.changeStudent = (id) => {
  * Action handlers
  */
 const initialize = async () => {
-  const trophies = await Server.getAllTrophies();
-  _allTrophies = trophies.map(TrophyModel.fromServer);
+  const trophiesPromise = Server.getAllTrophies();
+  const studentPromise = Server.getLoggedInStudent();
 
-  _student = new StudentModel().updateFromServer(Server.getLoggedInStudent(), _allTrophies);
+  Promise.all([trophiesPromise, studentPromise])
+    .then(([trophies, student]) => {
+      _allTrophies = trophies.map(TrophyModel.fromServer);
+      _student = new StudentModel().updateFromServer(student, _allTrophies);
 
-  Store.emitChange();
+      Store.emitChange();
+    });
 };
 
 const logReadingTime = (minutes) => {
