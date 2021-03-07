@@ -1,7 +1,7 @@
 @import "CustomTheme";
 
 $size-title: 28px;
-$size-subtitle: 20px;
+$size-body: 20px;
 
 body {
   margin: 0;
@@ -42,24 +42,28 @@ body {
   }
 
   #content {
+    font-size: $size-body;
+
     .title-header {
       font-size: $size-title;
       font-weight: bold;
       margin-bottom: 20px;
     }
 
-    .count {
-      font-size: $size-subtitle;
-      margin-bottom: 15px;
-    }
-
     .trophies {
+      align-items: flex-start;
       display: flex;
+      margin-top: 15px;
+      height: 300px;
 
       .trophy {
         font-size: 20px;
         padding: 20px;
         width: 200px;
+
+        &.btn-primary {
+          color: white;
+        }
 
         &:not(:first-child) {
           margin-left: 50px;
@@ -71,5 +75,15 @@ body {
         }
       }
     }
+
+    .btn-group {
+      margin-top: 15px;
+    }
+  }
+}
+
+#trophy-modal {
+  .second-line {
+    margin-top: 10px;
   }
 }

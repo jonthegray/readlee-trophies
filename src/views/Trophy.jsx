@@ -7,13 +7,16 @@ import TrophyModel from "../models/TrophyModel.js";
 
 const propTypes = {
   model: PropTypes.instanceOf(TrophyModel).isRequired,
-  isAchieved: PropTypes.bool.isRequired
+  isAchieved: PropTypes.bool.isRequired,
+  openTrophy: PropTypes.func.isRequired
 };
 
 const Trophy = (props) => {
-  const achieved = props.isAchieved ? "ACHIEVED!" : "nope";
-  
-  return <Button variant="outline-secondary" className="trophy">
+  const variant = props.isAchieved ? "primary" : "outline-secondary";
+
+  return <Button variant={variant}
+                 className="trophy"
+                 onClick={props.openTrophy}>
     <div>{props.model.name}</div>
     <div><FontAwesomeIcon icon={faTrophy} /></div>
   </Button>;
