@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ImmutablePropTypes from "react-immutable-proptypes";
 import Actions from "../flux/Actions.js";
 import StudentModel from "../models/StudentModel.js";
 
-//JONTODO Remove immutable and react-immutable-proptypes
 //JONTODO Turn this into e.g. Header
 const propTypes = {
-  allStudents: ImmutablePropTypes.listOf(PropTypes.instanceOf(StudentModel)).isRequired,
   student: PropTypes.instanceOf(StudentModel)
 };
 
