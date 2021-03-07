@@ -8,7 +8,6 @@ import LogTimeModal from "./LogTimeModal.jsx";
 import PageHeader from "./PageHeader.jsx";
 import Trophies from "./Trophies.jsx";
 
-//JONTODO Use Context?
 const propTypes = {
   student: PropTypes.instanceOf(StudentModel),
   allTrophies: PropTypes.arrayOf(PropTypes.instanceOf(TrophyModel)).isRequired
