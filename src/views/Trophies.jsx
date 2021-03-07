@@ -45,4 +45,4 @@ const Trophies = (props) => {
 };
 
 Trophies.propTypes = propTypes;
-export default Trophies;
+export default React.memo(Trophies);

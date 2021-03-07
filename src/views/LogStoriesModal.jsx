@@ -51,4 +51,4 @@ const LogStoriesModal = (props) => {
 };
 
 LogStoriesModal.propTypes = propTypes;
-export default LogStoriesModal;
+export default React.memo(LogStoriesModal);

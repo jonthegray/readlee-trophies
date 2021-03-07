@@ -81,4 +81,4 @@ const TrophyPage = (props) => {
 };
 
 TrophyPage.propTypes = propTypes;
-export default TrophyPage;
+export default React.memo(TrophyPage);

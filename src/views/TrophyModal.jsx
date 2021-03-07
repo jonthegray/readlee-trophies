@@ -37,4 +37,4 @@ const TrophyModal = (props) => {
 };
 
 TrophyModal.propTypes = propTypes;
-export default TrophyModal;
+export default React.memo(TrophyModal);

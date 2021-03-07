@@ -18,4 +18,4 @@ const PageHeader = (props) => {
 };
 
 PageHeader.propTypes = propTypes;
-export default PageHeader;
+export default React.memo(PageHeader);

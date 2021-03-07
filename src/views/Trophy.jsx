@@ -23,4 +23,4 @@ const Trophy = (props) => {
 };
 
 Trophy.propTypes = propTypes;
-export default Trophy;
+export default React.memo(Trophy);
